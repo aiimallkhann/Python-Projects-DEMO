@@ -1,0 +1,32 @@
+fruits = {
+    'Apple' : 0.60,
+    'Banana' : 0.40,
+    'Orange' : 0.50,
+    'Watermelon' : 1.00,
+    'Mango' : 0.70
+}
+
+def receiptCalculation():
+    total = 0
+    cart = {}
+    print(f"Available fruits\n {fruits}")
+    while True:
+        productName = input("Enter a product name (or 'done'): ").capitalize()
+        if productName == 'done' or productName == 'Done':
+            break
+        quantities = int(input("Enter quantity: "))
+        if productName in fruits:
+            cart[productName] = quantities
+        else:
+            print("Product does not exist!")
+    print("\n-------- Receipt --------")
+    for item in cart:
+        total += cart[item] * fruits[item]
+        print(f"{item}  x{cart[item]}  ${cart[item] * fruits[item]:.2f}")
+    tax = total * 0.08
+    grandTotal = total + tax
+    print(f"Total:       ${total:.2f}")
+    print(f"Tax (8%):    ${tax:.2f}")
+    print(f"Grand Total: ${grandTotal:.2f}")
+
+receiptCalculation()
